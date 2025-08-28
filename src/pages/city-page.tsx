@@ -1,12 +1,12 @@
 import CurrentWeather from "@/components/current-weather";
+import FavoriteButton from "@/components/favorite-button";
 import HourlyTemperature from "@/components/hourly-temperature";
 import { WeatherSkeleton2 } from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
 import WeatherDetails from "@/components/weather-details";
 import WeatherForecast from "@/components/weather-forecast";
 import { useForecastQuery, useWeatherQuery } from "@/hooks/use-weather";
-import { AlertTriangle, RefreshCw } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 import { useParams, useSearchParams } from "react-router-dom";
 
 const CityPage = () => {
@@ -34,7 +34,7 @@ const CityPage = () => {
   }
 
   if (weatherQuery.error || forecastQuery.error || !params.cityName) {
-    <WeatherSkeleton2 />;
+    return <WeatherSkeleton2 />;
   }
 
   return (
@@ -44,13 +44,22 @@ const CityPage = () => {
         <h1 className="text-3xl font-bold tracking-tight">
           {params.cityName}, {weatherQuery.data?.sys.country}
         </h1>
-        <div className="">Favorite Button</div>
+
+        {/* Favorite Button */}
+        <div className="">
+          {weatherQuery.data && (
+            <FavoriteButton
+              data={{ ...weatherQuery.data, name: params.cityName }}
+            />
+          )}
+        </div>
       </div>
 
       <div className="grid gap-6">
         <div className="flex flex-col gap-4">
           {/* Current Temperature */}
           <CurrentWeather data={weatherQuery.data} />
+
           {/* Hourly Temperature */}
           <HourlyTemperature data={forecastQuery.data} />
         </div>
@@ -58,6 +67,7 @@ const CityPage = () => {
         <div className="grid gap-6 md:grid-cols-2 items-start">
           {/* Weather Details */}
           <WeatherDetails data={weatherQuery.data} />
+
           {/* forecast */}
           <WeatherForecast data={forecastQuery.data} />
         </div>
