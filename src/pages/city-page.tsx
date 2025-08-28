@@ -58,18 +58,20 @@ const CityPage = () => {
       <div className="grid gap-6">
         <div className="flex flex-col gap-4">
           {/* Current Temperature */}
-          <CurrentWeather data={weatherQuery.data} />
+          {weatherQuery.data && <CurrentWeather data={weatherQuery.data} />}
 
           {/* Hourly Temperature */}
-          <HourlyTemperature data={forecastQuery.data} />
+          {forecastQuery.data && (
+            <HourlyTemperature data={forecastQuery.data} />
+          )}
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 items-start">
           {/* Weather Details */}
-          <WeatherDetails data={weatherQuery.data} />
+          {weatherQuery.data && <WeatherDetails data={weatherQuery.data} />}
 
           {/* forecast */}
-          <WeatherForecast data={forecastQuery.data} />
+          {forecastQuery.data && <WeatherForecast data={forecastQuery.data} />}
         </div>
       </div>
     </div>
