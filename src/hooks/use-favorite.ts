@@ -63,7 +63,7 @@ export function useFavorite() {
   });
 
   return {
-    history: favoritesQuery.data,
+    favorites: favoritesQuery.data,
     addFavorite,
     removeFavorite,
     isFavorite: (lat: number, lon: number) => {
