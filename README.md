@@ -27,7 +27,7 @@ Klimate is a weather web application that allows users to search for cities and 
 
 ## 📸 Screenshots
 ![Alt Text](https://github.com/alaaSnayel/klimate/blob/1277d28a5543dda5565cd3ff6b790fb8e5dfc4e5/localhost_5173_.png)
-
+![Alt Text](https://github.com/alaaSnayel/klimate/blob/43e7eecb41660a3e51b262b6611688bc2722e304/ScreenShot%20Tool%20-20250905101620.png)
 
 ---
 
